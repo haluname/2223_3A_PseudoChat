@@ -19,4 +19,78 @@
     - PER IL 10. Gestite il bottone di invio in basso 
         #se il campo di testo non è vuoto aggiungere il messaggio in coda agli altri del personaggio selezionato
 
+
+        
 */
+
+
+function init(){
+
+   
+    let list = " ";
+    let persone= " ";
+    
+
+
+    for (let i in nomeUtenti) {
+
+        if(i!=0){
+
+        persone += lista(nomeUtenti[i], genereUt[i], cognomeUtenti[i], i);
+
+        }
+    }
+
+    document.getElementById("listUtenti").innerHTML = persone;
+
+}
+
+
+
+
+function lista(nomeUtenti, genereUt, cognomeUtenti, i){
+
+
+    if(genereUt=="m"){
+
+        genere="face";
+    }
+    else{
+        genere="face_3";
+    }
+
+    return `
+        <li id="${nomeUtenti}">
+            <div class="material-symbols-outlined icone" onclick='clicca(${nomeUtenti})'>
+                ${genere}
+            </div>
+            ${nomeUtenti + '.' + cognomeUtenti.substring(0,1)}
+        </li>
+`;
+}
+
+
+function clicca(nomeUte){
+
+    let nome = document.getElementById("divNome");
+    let ora = document.getElementById("divUltimoMes");
+    let persona = document.getElementsByTagName("li");
+    let face = document.getElementById("faccia");
+    
+    ora.innerText="Oggi alle 9:00";
+
+    nome.innerText=nomeUte;
+
+    if(genereUt=="m"){
+
+        face.innerHTML="face"
+    }
+    else
+    {
+        face.innerHTML="face_3"
+    }
+
+    console.log(ora)    
+
+
+}
